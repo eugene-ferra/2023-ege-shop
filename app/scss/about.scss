@@ -1,0 +1,139 @@
+.about-block {
+  position: relative;
+  padding: 30px 0;
+  .container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  iframe {
+    width: 65%;
+    height: calc(100vh - 170px);
+  }
+}
+
+.about-card {
+  width: 35%;
+  height: max-content;
+  background: #ffffff;
+  box-shadow: 0px 20px 50px rgba(18, 17, 39, 0.2);
+  padding: 18px;
+  &__basic {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px 10px;
+    flex-wrap: wrap;
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid rgba($gray, 0.6);
+  }
+  &__basic-block {
+    padding-left: 30px;
+  }
+  &__subtitle {
+    font-size: 12px;
+    line-height: 15px;
+    color: $gray;
+    margin-bottom: 8px;
+  }
+  &__link {
+    display: block;
+    margin-top: 8px;
+    font-weight: 400;
+    transition: 0.2s all;
+    &:hover {
+      color: $yellow;
+    }
+  }
+  &__work {
+    display: flex;
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid rgba($gray, 0.5);
+  }
+  &__work-block {
+    width: 55%;
+  }
+  &__text {
+    span {
+      font-weight: 400;
+    }
+  }
+
+  &__title {
+    width: 40%;
+  }
+  &__office {
+    display: flex;
+    &:first-child{
+        margin-bottom: 24px;
+    }
+  }
+  &__addresses {
+    width: 55%;
+    font-weight: 400;
+  }
+  &__address{
+    margin-bottom: 10px;
+  }
+}
+
+#phone,
+#mail {
+  position: relative;
+  &::before {
+    content: "";
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    display: block;
+    top: -2px;
+    left: -30px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+}
+
+#phone::before {
+  background-image: url("../images/icons/phone-black.svg");
+}
+#mail::before {
+  background-image: url("../images/icons/sms.svg");
+}
+
+
+@media(max-width: 992px){
+    .about-card{
+        &__title{
+            width: 100%;
+            margin-bottom: 8px;
+        }
+        &__work{
+            flex-wrap: wrap;
+        }
+        &__work-block{
+            width: 100%;
+        }
+        &__addresses{
+            width: 100%;
+        }
+        &__office{
+            flex-wrap: wrap;
+        }
+    }
+}
+
+@media(max-width: 768px){
+    .about-block{
+        .container{
+            flex-wrap: wrap;
+            iframe{
+                width: 100%;
+            }
+        }
+    }
+    .about-card{
+        width: 100%;
+    }
+}

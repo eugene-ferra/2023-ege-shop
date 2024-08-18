@@ -1,0 +1,54 @@
+.promo {
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  .container {
+    display: flex;
+    min-height: 720px;
+    align-items: center;
+  }
+  &__title {
+    color: $yellow;
+    max-width: 40%;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 56px;
+  }
+}
+
+@media(max-width: 992px){
+    .promo{
+        .container{
+            min-height: 550px;
+        }
+        &__title{
+            font-size: 34px;
+            line-height: 48px;
+        }
+    }
+}
+
+@media(max-width: 768px){
+    .promo{
+        .container{
+            min-height: 400px;
+        }
+        &__title{
+            font-size: 28px;
+            line-height: 36px;
+        }
+    }
+}
+
+
+@media(max-width: 576px){
+    .promo{
+        .container{
+            min-height: 250px;
+        }
+        &__title{
+            font-size: 18px;
+            line-height: 24px;
+        }
+    }
+}

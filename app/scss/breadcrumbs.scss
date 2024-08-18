@@ -1,0 +1,42 @@
+.breadcrumbs {
+  padding: 10px;
+  &__list {
+      display: flex;
+      overflow-x: auto;
+      padding-bottom: 5px;
+  }
+  &__item {
+    margin-right: 40px;
+    position: relative;
+    color: $gray;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    border-bottom: 1px solid $gray;
+    transition: .2s all;
+    min-width: max-content;
+    &:hover{
+      color: $dark_gray;
+      border-bottom: 1px solid $dark_gray;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      display: block;
+      top: 50%;
+      right: -33px;
+      transform: translateY(-50%);
+      width: 22px;
+      height: 10px;
+      object-fit: contain;
+      background-image: url("../images/icons/arrow.svg");
+      background-repeat: no-repeat;
+    }
+    &:last-child::after{
+        display: none;
+    }
+    &:last-child{
+        margin-right: 0;
+    }
+  }
+}

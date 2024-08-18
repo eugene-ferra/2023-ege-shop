@@ -1,0 +1,33 @@
+.all-catalog {
+  padding: 20px 0;
+  &__title {
+    text-align: center;
+    font-size: 24px;
+    line-height: 26px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+  }
+  &__subtitle {
+    font-size: 22px;
+    line-height: 24px;
+    font-weight: 500;
+    margin-bottom: 30px;
+    position: relative;
+    width: max-content;
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 1px;
+      width: 100%;
+      height: 2px;
+      background-color: $yellow;
+      display: block;
+    }
+  }
+  .gallery {
+    padding: 0;
+    margin-bottom: 50px;
+  }
+}

@@ -1,0 +1,674 @@
+.card {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #d6d6d6;
+  padding: 24px;
+  position: relative;
+  transition: 0.2s all;
+  height: auto;
+  &:hover {
+    box-shadow: 0px 5px 5px rgba(18, 17, 39, 0.226);
+  }
+  &.liked {
+    .card__like {
+      svg {
+        fill: $red;
+      }
+    }
+  }
+  &.compared {
+    .card__compare {
+      svg {
+        fill: $yellow;
+      }
+    }
+  }
+  &::before {
+    content: "Новинка";
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    display: none;
+    background-color: $green;
+    padding: 8px 18px;
+    border-radius: 54px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: #ffffff;
+    z-index: 1;
+  }
+  &::after {
+    content: "%";
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    display: none;
+    background-color: $red;
+    padding: 8px 18px;
+    border-radius: 60px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    color: #ffffff;
+    z-index: 1;
+  }
+  &.card--sale {
+    &::after {
+      display: block;
+    }
+    .card__price--old {
+      display: block;
+    }
+  }
+  &.card--new {
+    &::before {
+      display: block;
+    }
+  }
+  &.card--sale.card--new {
+    &::before,
+    &:after {
+      display: block;
+    }
+    &::after {
+      top: 65px;
+    }
+  }
+
+  &__inner {
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  &__center-block {
+    display: none;
+  }
+  &__descr {
+    display: none;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    margin-top: 20px;
+  }
+  &__cross {
+    position: absolute;
+    display: none;
+    top: 0;
+    right: 0;
+    &:hover {
+      svg path {
+        fill: $red;
+      }
+    }
+    svg {
+      cursor: pointer;
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+      path {
+        transition: 0.2s all;
+      }
+    }
+  }
+  &__compare {
+    position: absolute;
+    top: 0;
+    right: 30px;
+    &:hover {
+      svg {
+        fill: $yellow;
+      }
+    }
+    svg {
+      cursor: pointer;
+      transition: 0.2s all;
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+    }
+  }
+  &__like {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    position: absolute;
+    top: 0;
+    right: 0;
+    &.card__like--active {
+      svg {
+        fill: $red;
+        transform: scale(110%);
+      }
+    }
+    svg {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transition: 0.3s all;
+      cursor: pointer;
+      &:hover {
+        fill: $red;
+        transform: scale(110%);
+      }
+    }
+  }
+  &__img-block {
+    display: block;
+    height: 180px;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  &__title {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 22px;
+    margin-bottom: 8px;
+  }
+  &__articul,
+  &__price__title {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    margin-bottom: 10px;
+    display: block;
+  }
+  &__price-title {
+    display: block;
+    margin-top: auto;
+    color: $gray;
+    margin-bottom: 4px;
+  }
+  &__price-block {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    .card__title,
+    .card__articul,
+    .card__price-title,
+    .card__button,
+    .card__counter {
+      display: none;
+    }
+  }
+  &__price {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    &--old {
+      display: none;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 19px;
+      text-decoration-line: line-through;
+      margin-right: 20px;
+    }
+  }
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+  }
+  &__counter-title {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    margin-bottom: 5px;
+  }
+  &__counter {
+    margin-right: 20px;
+  }
+  &__counter-block {
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    filter: drop-shadow(0px 1px 7px rgba(0, 0, 0, 0.25));
+    border-radius: 4px;
+  }
+  &__counter-num {
+    margin: 0 10px;
+  }
+  &__counter-minus,
+  &__counter-plus {
+    user-select: none;
+    transition: 0.2s all;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 15px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    &:hover {
+      background-color: #8181812f;
+    }
+  }
+  &__button {
+    width: 100%;
+    text-align: center;
+    border-radius: 50px;
+    border: 2px solid $yellow;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    transition: 0.2s all;
+    &:hover {
+      background-color: $yellow;
+      color: #ffffff;
+    }
+  }
+  &.card--wide {
+    .card__inner {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    .card__img-block {
+      max-width: 180px;
+      margin-bottom: 0;
+      margin: auto 0;
+    }
+    .card__compare {
+      top: 30px;
+      right: 0;
+    }
+    .card__price-title {
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
+    .card__title,
+    .card__articul,
+    .card__price-title {
+      display: none;
+    }
+    .card__center-block {
+      display: block;
+      padding-right: 40px;
+      max-width: calc(100% - 400px);
+      overflow-y: auto;
+      .card__descr {
+        display: block;
+      }
+      .card__title {
+        display: block;
+      }
+    }
+    .card__footer {
+      display: none;
+    }
+    .card__price-block {
+      flex-direction: column;
+      align-items: flex-start;
+      max-width: 180px;
+      justify-content: flex-start;
+      margin-bottom: 0;
+      padding-right: 30px;
+      .card__counter {
+        margin-bottom: 10px;
+        margin-top: auto;
+      }
+      .card__counter-title {
+        margin-top: 15px;
+      }
+      .card__button {
+        min-height: 50px;
+      }
+      .card__title,
+      .card__articul,
+      .card__price-title,
+      .card__button,
+      .card__counter {
+        display: block;
+      }
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .card {
+    &::before,
+    &::after {
+      left: 5px;
+      top: 5px;
+      font-size: 14px;
+      padding: 6px 12px;
+    }
+    &.card--sale.card--new {
+      &::before,
+      &:after {
+        display: block;
+      }
+      &::after {
+        top: 40px;
+      }
+    }
+    padding: 5px;
+    padding-bottom: 10px;
+    &__footer {
+      flex-wrap: wrap;
+    }
+    &__img-block {
+      height: 150px;
+    }
+    &__price-block {
+      margin-bottom: 5px;
+    }
+    &__counter {
+      margin-top: 5px;
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+    &__button {
+      min-height: 50px;
+    }
+    &__title,
+    &__price-title,
+    &__counter-title,
+    &__button {
+      font-size: 14px;
+      line-height: 17px;
+      margin-bottom: 0px;
+    }
+    &__button {
+      min-height: 40px;
+    }
+    &__price {
+      font-size: 15px;
+      line-height: 17px;
+      &--old {
+        font-size: 13px;
+        line-height: 15px;
+      }
+    }
+    &__articul {
+      font-size: 13px;
+      line-height: 17px;
+    }
+    &__img-block {
+      margin-bottom: 5px;
+      height: 150px;
+    }
+    &.card--wide {
+      .card__center-block {
+        display: none;
+      }
+      .card__img-block {
+        max-width: 100%;
+        margin: 0 0 5px 0;
+      }
+      .card__title {
+        display: block;
+      }
+      .card__inner {
+        flex-direction: column;
+      }
+      .card__footer {
+        display: flex;
+      }
+      .card__title,
+      .card__articul,
+      .card__price-title {
+        display: block;
+      }
+      .card__price-title {
+        margin: 0;
+      }
+      .card__price-block {
+        padding-right: 0;
+        .card__title,
+        .card__articul,
+        .card__price-title,
+        .card__button,
+        .card__counter {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+.mini-card {
+  position: relative;
+  padding: 10px;
+  border: 2px solid rgba($gray, 0.3);
+  &::before {
+    content: "Новинка";
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: none;
+    background-color: $green;
+    padding: 6px 8px;
+    border-radius: 54px;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 15px;
+    color: #ffffff;
+    z-index: 1;
+  }
+  &::after {
+    content: "%";
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: none;
+    background-color: $red;
+    padding: 4px 8px;
+    border-radius: 60px;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 15px;
+    color: #ffffff;
+    z-index: 1;
+  }
+  &.mini-card--sale {
+    &::after {
+      display: block;
+    }
+    .mini-card__price,
+    .mini-card__sum {
+      &--old {
+        display: block;
+      }
+    }
+    .mini-card__price--old {
+      display: block;
+    }
+  }
+  &.mini-card--new {
+    &::before {
+      display: block;
+    }
+  }
+  &.mini-card--sale.mini-card--new {
+    &::before,
+    &:after {
+      display: block;
+    }
+    &::after {
+      top: 40px;
+    }
+  }
+  &__del {
+    position: absolute;
+    bottom: 5px;
+    right: 8px;
+    &:hover {
+      svg path {
+        fill: $red;
+      }
+    }
+    svg {
+      cursor: pointer;
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+      path {
+        transition: 0.2s all;
+      }
+    }
+  }
+  &__inner {
+    display: flex;
+  }
+  &__img-block {
+    max-width: 20%;
+    min-width: 20%;
+    padding-right: 10px;
+    flex: 1 1 auto;
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+  }
+  &__main {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    border-right: 2px solid rgba($gray, 0.3);
+    border-left: 2px solid rgba($gray, 0.3);
+    padding: 0 10px;
+  }
+  &__summary {
+    flex: 1 1 auto;
+    padding-left: 10px;
+    max-width: 20%;
+    min-width: 20%;
+  }
+  &__price-block {
+    display: flex;
+    margin-bottom: auto;
+  }
+  &__title {
+    margin-bottom: 20px;
+    font-size: 18px;
+    line-height: 22px;
+  }
+  &__price-title {
+    font-size: 16px;
+    line-height: 18px;
+    margin-bottom: 10px;
+  }
+  &__price,
+  &__sum {
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 20px;
+    margin-left: 0px;
+
+    &--old {
+      display: none;
+      margin-left: 0;
+      color: $gray;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 17px;
+      margin-right: 20px;
+      text-decoration-line: line-through;
+    }
+  }
+  &__count-title {
+    margin-bottom: 10px;
+    margin-top: auto;
+  }
+  &__sum {
+    margin-left: 0;
+    // display: block;
+  }
+  &__sum-title {
+    margin-bottom: 10px;
+  }
+  .card__counter-block {
+    width: max-content;
+  }
+}
+
+@media (max-width: 992px) {
+  .mini-card {
+    &__inner {
+      flex-wrap: wrap;
+    }
+    &__img-block {
+      order: 0;
+      max-width: 30%;
+      padding-bottom: 10px;
+    }
+    &__main {
+      order: 1;
+      border-right: none;
+      padding-bottom: 10px;
+      width: 70%;
+    }
+    &__summary {
+      order: 3;
+      max-width: 100%;
+      border-top: 2px solid rgba($gray, 0.3);
+      padding-top: 10px;
+      display: flex;
+    }
+    &__sum {
+      display: inline-block;
+      &--old {
+        margin-right: 10px;
+      }
+    }
+    &__sum-title {
+      margin-right: 15px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .card {
+    &__compare {
+      &:hover {
+        svg {
+          fill: #3c3c3b;
+        }
+      }
+    }
+    &__like {
+      &:hover {
+        svg {
+          transform: scale(100%);
+          fill: transparent;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .mini-card {
+    &__title,
+    &__price-title,
+    &__count-title {
+      font-size: 14px;
+      line-height: 17px;
+    }
+    &__title {
+      margin-bottom: 10px;
+    }
+    &__count-title {
+      margin-top: 10px;
+    }
+    &__summary {
+      padding-right: 30px;
+      flex-wrap: wrap;
+    }
+  }
+}

@@ -1,0 +1,111 @@
+.faq {
+  padding: 40px 0;
+  &__title {
+    font-size: 26px;
+    line-height: 34px;
+    font-weight: 500;
+    margin-bottom: 30px;
+    position: relative;
+    width: max-content;
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 1px;
+      width: 100%;
+      height: 2px;
+      background-color: $yellow;
+      display: block;
+    }
+  }
+  &__text {
+    font-weight: 400;
+    line-height: 20px;
+    margin-bottom: 20px;
+    text-align: justify;
+  }
+  &__list {
+    transition: 0.3s all;
+    margin-bottom: 30px;
+  }
+  &__item {
+    transition: 0.3s all;
+    transition: 0.3s all;
+    padding: 15px 15px 5px 15px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px #d6d6d6;
+    margin-bottom: 10px;
+  }
+  &__question,
+  &__answer {
+    transition: 0.3s all;
+    font-weight: 400;
+    text-align: justify;
+  }
+  &__answer {
+    padding-left: 30px;
+    transition: 0.3s all;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  &__question {
+    text-align: left;
+    font-weight: 500;
+    font-size: 17px;
+    position: relative;
+    font-weight: 500;
+    padding-left: 30px;
+    line-height: 17px;
+    cursor: pointer;
+    transition: 0.3s all;
+    user-select: none;
+    &::before {
+      transition: 0.3s all;
+      content: "";
+      position: absolute;
+      top: 8px;
+      left: 0;
+      width: 20px;
+      height: 4px;
+      transform: rotate(45deg);
+      border-radius: 20px;
+      background-color: $dark_gray;
+    }
+    &::after {
+      transition: 0.3s all;
+      content: "";
+      position: absolute;
+      transform: rotate(45deg);
+      top: 0px;
+      left: 8px;
+      width: 4px;
+      height: 20px;
+      border-radius: 20px;
+      background-color: $dark_gray;
+    }
+    & + .faq__answer {
+      //   animation: expand;
+      height: 100%;
+      opacity: 1;
+    }
+    &.non-opened {
+      & + .faq__answer {
+        height: 0;
+        opacity: 0;
+      }
+      &::before {
+        width: 15px;
+        transform: rotate(45deg);
+        border-radius: 20px 20px 0px 20px;
+        left: -2px;
+      }
+      &::after {
+        height: 15px;
+        transform: rotate(45deg);
+        top: 2px;
+        left: 12px;
+        border-radius: 20px 20px 0px 20px;
+      }
+    }
+  }
+}
